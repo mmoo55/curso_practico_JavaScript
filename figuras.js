@@ -76,6 +76,7 @@ console.groupEnd();
 
 
 // Aquí interactuamos con el HTML
+// Cuadrado
 function calcularPerimetroCuadrado() {
   const input = document.getElementById("InputCuadrado");
   const value = input.value;
@@ -89,4 +90,69 @@ function calcularAreaCuadrado() {
 
   const area = areaCuadrado(value);
   alert(area);
+}
+
+
+// Triángulo
+function calcularPerimetroTriangulo() {
+  const input1 = document.getElementById("InputTriangulo1");
+  const valueIzq = Number(input1.value);
+
+  const input2 = document.getElementById("InputTriangulo2");
+  const valueDer = Number(input2.value);
+
+  const inputBase = document.getElementById("InputTrianguloBase");
+  const valueBase = Number(inputBase.value);
+
+
+  const perimetro = perimetroTriangulo(valueIzq, valueDer, valueBase);
+  alert(perimetro);
+}
+
+function calcularAreaTriangulo() {
+  const inputBase = document.getElementById("InputTrianguloBase");
+  const valueBase = Number(inputBase.value);
+
+  const inputAltura = document.getElementById("InputTrianguloAltura");
+  const valueAltura = Number(inputAltura.value);
+
+  const area = areaTriangulo(valueBase, valueAltura);
+  alert(area);
+}
+
+// Círculo
+function calcularPerimetroCirculo() {
+  const input = document.getElementById("InputCirculo");
+  const value = input.value;
+
+  const perimetro = perimetroCirculo(value);
+  alert(perimetro);
+}
+
+function calcularAreaCirculo() {
+  const input = document.getElementById("InputCirculo");
+  const value = input.value;
+
+  const area = areaCirculo(value);
+  alert(area);
+}
+
+// Ejercicio calcular la altura de un triángulo isósceles
+function calcularAlturaTriangulo() {
+  const inputIzq = document.getElementById("InputTrianguloIzq");
+  const valueIzq = Number(inputIzq.value);
+
+  const inputDer = document.getElementById("InputTrianguloDer");
+  const valueDer = Number(inputDer.value);
+
+  const inputBase = document.getElementById("InputTrianguloBaseIs");
+  const valueBase = Number(inputBase.value);
+
+  if((valueIzq === valueDer) && (valueIzq != valueBase) && (valueDer != valueBase)) {
+    const altura = Math.sqrt((Math.pow(valueIzq, 2) - ((Math.pow(valueBase, 2) / 4))));
+
+    alert(altura);
+  } else {
+    alert("No es un triángulo isósceles");
+  }
 }

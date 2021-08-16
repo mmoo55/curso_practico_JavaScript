@@ -30,6 +30,73 @@
     </form>
   </section>
 
+  <section>
+    <h2>Calcula el área y perímetro de un triángulo</h2>
+    <form>
+      <label for="InputTriangulo1">
+        Escribe cuánto mide el lado izquierdo de tu triángulo:
+      </label>
+      <input id="InputTriangulo1" type="number" />
+      <label for="InputTriangulo2">
+        Escribe cuánto mide el lado derecho de tu triángulo:
+      </label>
+      <input id="InputTriangulo2" type="number" />
+      <label for="InputTrianguloBase">
+        Escribe cuánto mide la base de tu triángulo:
+      </label>
+      <input id="InputTrianguloBase" type="number" />
+      <label for="InputTrianguloAltura">
+        Escribe cuánto mide la altura de tu triángulo:
+      </label>
+      <input id="InputTrianguloAltura" type="number" />
+
+      <button type="button" onclick="calcularPerimetroTriangulo()">
+        Calcular el perímetro
+      </button>
+      <button type="button" onclick="calcularAreaTriangulo()">
+        Calcular el área
+      </button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Calcula el área y perímetro de un círculo</h2>
+    <form>
+      <label for="InputCirculo">
+        Escribe cuánto mide el radio de tu círculo:
+      </label>
+      <input id="InputCirculo" type="number" />
+      <button type="button" onclick="calcularPerimetroCirculo()">
+        Calcular el perímetro
+      </button>
+      <button type="button" onclick="calcularAreaCirculo()">
+        Calcular el área
+      </button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Calcula la altura de un triángulo isósceles</h2>
+    <form>
+      <label for="InputTrianguloIzq">
+        Escribe cuánto mide el lado izquierdo de tu triángulo:
+      </label>
+      <input id="InputTrianguloIzq" type="number" />
+      <label for="InputTrianguloDer">
+        Escribe cuánto mide el lado derecho de tu triángulo:
+      </label>
+      <input id="InputTrianguloDer" type="number" />
+      <label for="InputTrianguloBaseIs">
+        Escribe cuánto mide la base de tu triángulo:
+      </label>
+      <input id="InputTrianguloBaseIs" type="number" />
+
+      <button type="button" onclick="calcularAlturaTriangulo()">
+        Calcular la altura
+      </button>
+    </form>
+  </section>
+
   <script src="./figuras.js"></script>
 </body>
 </html>
