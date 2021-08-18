@@ -47,29 +47,53 @@ function onClickButtonPriceCupon(){
     const inputCupon = document.getElementById("InputCupon");
     const nombreCupon = inputCupon.value;
 
-    const resultCupon = document.getElementById("ResultCupon");
+    // const resultCupon = document.getElementById("ResultCupon");
 
     let descuento;
-    let precioConDescuento;
 
-    switch(true){
-        case nombreCupon === cupones[0]:
+    // switch(true){
+    //     case nombreCupon === cupones[0]:
+    //         descuento = 15;
+    //         precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
+    //         resultCupon.innerText = `Cupón valido, el precio con descuento es de ${precioConDescuento}$`;
+    //         break;
+    //     case nombreCupon === cupones[1]:
+    //         descuento = 30;
+    //         precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
+    //         resultCupon.innerText = `Cupón valido, el precio con descuento es de ${precioConDescuento}$`;
+    //         break;   
+    //     case nombreCupon === cupones[2]:
+    //         descuento = 35;
+    //         precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
+    //         resultCupon.innerText = `Cupón valido, el precio con descuento es de ${precioConDescuento}$`;
+    //         break;
+    //     default:
+    //         resultCupon.innerText = "El cupon ingresado no es valido, por favor vuelva a intentarlo"
+    // }
+
+    switch(nombreCupon) {
+        case cupones[0]:
             descuento = 15;
-            precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
-            resultCupon.innerText = `Cupón valido, el precio con descuento es de ${precioConDescuento}$`;
             break;
-        case nombreCupon === cupones[1]:
+        case cupones[1]:
             descuento = 30;
-            precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
-            resultCupon.innerText = `Cupón valido, el precio con descuento es de ${precioConDescuento}$`;
-            break;   
-        case nombreCupon === cupones[2]:
-            descuento = 35;
-            precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
-            resultCupon.innerText = `Cupón valido, el precio con descuento es de ${precioConDescuento}$`;
+            break;
+        case cupones[2]:
+            descuento = 25;
             break;
         default:
-            resultCupon.innerText = "El cupon ingresado no es valido, por favor vuelva a intentarlo"
+            descuento = 0;
     }
+
+    let precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
+
+    const resultCupon = document.getElementById("ResultCupon");
+    
+    if(descuento === 0) {
+        resultCupon.innerText = "El cupon ingresado no es valido, por favor vuelva a intentarlo"
+    } else {
+        resultCupon.innerText = `Cupón valido, el precio con descuento es de ${precioConDescuento}$`
+    }
+
 
 }
