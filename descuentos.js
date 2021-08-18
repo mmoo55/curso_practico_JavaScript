@@ -17,3 +17,16 @@ function calcularPrecioConDescuento(precio, descuento) {
 
     return precioConDescuento;
 }
+
+function onClickButtonPriceDescount() {
+    const inputPrice = document.getElementById("InputPrice");
+    const priceValue = inputPrice.value;
+
+    const inputDescount = document.getElementById("InputDescount");
+    const descountValue = inputDescount.value;
+
+    const precioConDescuento = calcularPrecioConDescuento(priceValue, descountValue);
+
+    const resultP = document.getElementById("ResultP");
+    resultP.innerText = "El precio con descuento son: $" + precioConDescuento; // innerText se comporta como un atributo para asignar un texto y sea mostrado en html
+}
