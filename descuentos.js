@@ -22,8 +22,8 @@ function onClickButtonPriceDescount() {
     const inputPrice = document.getElementById("InputPrice");
     const priceValue = inputPrice.value;
 
-    const inputDescount = document.getElementById("InputDescount");
-    const descountValue = inputDescount.value;
+    const inputDiscount = document.getElementById("InputDiscount");
+    const descountValue = inputDiscount.value;
 
     const precioConDescuento = calcularPrecioConDescuento(priceValue, descountValue);
 
