@@ -30,3 +30,46 @@ function calcularMediaAritmetica(lista) {
 
     return promedioLista;
 }
+
+
+// Media geométrica
+// Ejemplo 1
+function calcularMediaGeometrica(lista) {
+    const multiplicarLista = lista.reduce(
+        function (valorAcumulado = 0, nuevoElemento) {
+            return valorAcumulado * nuevoElemento;
+        }
+    );
+
+    if (multiplicarLista >= 0) {
+        const mediaGeometrica = Math.pow(multiplicarLista, 1 / lista.length);
+
+        return mediaGeometrica
+    } else {
+        return "Los valores deben ser positivos"
+    }
+}
+
+
+// Ejemplo 2: supongamos los resultados de una empresa. La empresa ha generado un 20% de rentabilidad el primer año, un 15% el segundo año, un 33% el tercer año y un 25% el cuarto año.
+// Si las rentabilidades fueran negativas, no se pondrían números negativos. Si la rentabilidad es del -20%, el número a multiplicar sería 0,80. Si la rentabilidad es del -5%, el número a multiplicar sería 0,95.
+// 20% = 1.20
+// -20% = 0.80
+
+function calcularMediaGeometricaEmpresa(lista2) {
+    const listaPorcentajes = [];
+
+    for (i=0; i < lista2.length; i++) {
+        listaPorcentajes[i] = (lista2[i] / 100) + 1;
+    }
+
+    const multiplicarLista = listaPorcentajes.reduce(
+        function (valorAcumulado = 0, nuevoElemento) {
+            return valorAcumulado * nuevoElemento;
+        }
+    );
+
+    const mediaGeometrica = Math.pow(multiplicarLista, 1 / listaPorcentajes.length);
+    
+    return mediaGeometrica;
+}
