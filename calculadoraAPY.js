@@ -1,10 +1,3 @@
-// function options(optionSelected) {
-//     if (optionSelected.compound.selectedIndex != 0) {
-//         document.location = optionSelected.compound.options[optionSelected.compound.selectedIndex].value
-//     }
-// }
-
-
 function convertAPYToAPR(APYPercent, compoundFrequency){
     let numberOfTimes;
     let APR;
@@ -93,5 +86,3 @@ function calculateAPY() {
 
 // 23.42/12 = 1.95
 // 23.42/365= 1.92
-
-/* onchange="options(this.form)" */
