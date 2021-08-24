@@ -1,36 +1,36 @@
-function options(optionSelected) {
-    if (optionSelected.compound.selectedIndex != 0) {
-        document.location = optionSelected.compound.options[optionSelected.compound.selectedIndex].value
-    }
-}
+// function options(optionSelected) {
+//     if (optionSelected.compound.selectedIndex != 0) {
+//         document.location = optionSelected.compound.options[optionSelected.compound.selectedIndex].value
+//     }
+// }
 
 
-
-function convertAPYToAPR(apy, compoundFrequency){
+function convertAPYToAPR(APYPercent, compoundFrequency){
     let numberOfTimes;
+    let APR;
+    let APY = APYPercent / 100;
+    
+    // APR = raiz12 ((APY + 1) (n^n)) -n
 
-    switch (compoundFrequency) {
-        case 1: "daily"
-            numberOfTimes = 365;
-            break;
-        case 2: "weekly"
-            numberOfTimes = 365 / 7;
-            break;
-        case 3: "monthly"
-            numberOfTimes = 365 / 30;
-            break;
-        case 4: "quarterly"
-            numberOfTimes = 365 / 12 * 3;
-            break;
-        case 5: "half-yearly"
-            numberOfTimes = 365 / 2;
-            break;
-        case 6: "yearly"
-            numberOfTimes = 365 / 365;
-            break;
-        default
+    if (compoundFrequency == "daily") {
+        numberOfTimes = 365;
+    } else if (compoundFrequency == "weekly") {
+        numberOfTimes = 365 / 7;
+    } else if (compoundFrequency == "monthly") {
+        numberOfTimes = 365 / 30;
+    } else if (compoundFrequency == "quarterly") {
+        numberOfTimes = 365 / 12 * 3;
+    } else if (compoundFrequency == "half-yearly") {
+        numberOfTimes = 365 / 2;
+    } else { /* if (compoundFrequency == "yearly") */
+        numberOfTimes = 365 / 365;
     }
 
+    APR = Math.pow((APY+1)*(Math.pow(numberOfTimes, numberOfTimes)), 1 / numberOfTimes) - numberOfTimes;
+    
+    const APRPercent = APR * 100;
+
+    return APRPercent;
 }
 
 function amount(apy, term, initialBalance) {
@@ -39,13 +39,13 @@ function amount(apy, term, initialBalance) {
     
     const calculateFinalBlance = (APYTotalDays / 100) * initialBalance;
 
-    return initialBalance + calculateFinalBlance;
+    return Number(initialBalance) + Number(calculateFinalBlance);
 }
 
 
 function calculateAPY() {
-    // const inputInterest = document.getElementById("inputInterest");
-    // const valueInterest = inputInterest.value;
+    const inputInterest = document.getElementById("inputInterest");
+    const valueInterest = inputInterest.value;
 
     const inputCompoundFrequency = document.getElementById("compoundFrequency");
     const valueCompoundFrequency = inputCompoundFrequency.value;
@@ -57,9 +57,15 @@ function calculateAPY() {
     const valueTerm = inputTerm.value;
 
     const inputInitialBalance = document.getElementById("inputInitialBalance");
-    const valueInputBalance = inputInitialBalance.value;
+    const valueInitialBalance = inputInitialBalance.value;
 
+    const ResultAmount = amount(valueAPY, valueTerm, valueInitialBalance);
 
+    const resultAmount = document.getElementById("amount");
+    resultAmount.innerText = `${ResultAmount} $`
+
+    const ResultInteres = convertAPYToAPR(valueAPY, valueCompoundFrequency);
+    /* console.log(ResultInteres); */
 }
 
 // Ejemplo Calculando APR con APY y compoundFrequency mensual
@@ -87,3 +93,5 @@ function calculateAPY() {
 
 // 23.42/12 = 1.95
 // 23.42/365= 1.92
+
+/* onchange="options(this.form)" */

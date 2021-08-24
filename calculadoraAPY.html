@@ -15,10 +15,10 @@
         <div class="calculadora__form-container">
             <form class="calculadora__form-container--form">
                 <label for="inputInterest">Interest</label>
-                <input class="inputInterest" type="number">
+                <input class="inputTerm" id="inputInterest" type="number">
 
                 <label for="compoundFrequency">Compound frequency</label>
-                <select name="compoundFrequency" class="compoundFrequency" onchange="options(this.form)">
+                <select name="compoundFrequency" class="select" id="compoundFrequency">
                     <option selected>---</option>
                     <option value="daily">daily</option>
                     <option value="weekly">weekly</option>
@@ -29,13 +29,13 @@
                 </select>
 
                 <label for="inputAPY">APY</label>
-                <input class="inputAPY" type="number">
+                <input class="input" id="inputAPY" type="number">
 
                 <label for="inputTerm">Term</label>
-                <input class="inputTerm" type="number">
+                <input class="input" id="inputTerm" type="number">
 
                 <label for="inputInitialBalance">Initial balance</label>
-                <input class="inputInitialBalance" type="number">
+                <input class="input" id="inputInitialBalance" type="number">
 
                 <button type="button" onclick="calculateAPY()">
                     Calculate
@@ -45,7 +45,7 @@
 
         <div class="calculadora__result-container">
             <h3 class="calculadora__result-container--title">El retorno total es de:</h3>
-            <p class="calculadora__result-container--amount"></p>
+            <p class="calculadora__result-container--amount" id="amount"></p>
         </div>
 
     </section>
