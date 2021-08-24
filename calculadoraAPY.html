@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APY calculator</title>
+</head>
+<body>
+    <header class="header">
+        <h2 class="header__titulo">APY calculator</h2>
+    </header>
+
+    <section class="Calculadora">
+        <div class="calculadora__form-container">
+            <form class="calculadora__form-container--form">
+                <label for="inputInterest">Interest</label>
+                <input class="inputInterest" type="number">
+
+                <label for="compoundFrequency">Compound frequency</label>
+                <select name="compoundFrequency" class="compoundFrequency" onchange="options(this.form)">
+                    <option selected>---</option>
+                    <option value="daily">daily</option>
+                    <option value="weekly">weekly</option>
+                    <option value="monthly">monthly</option>
+                    <option value="quarterly">quarterly</option>
+                    <option value="half-yearly">half-yearly</option>
+                    <option value="yearly">yearly</option>
+                </select>
+
+                <label for="inputAPY">APY</label>
+                <input class="inputAPY" type="number">
+
+                <label for="inputTerm">Term</label>
+                <input class="inputTerm" type="number">
+
+                <label for="inputInitialBalance">Initial balance</label>
+                <input class="inputInitialBalance" type="number">
+
+                <button type="button" onclick="calculateAPY()">
+                    Calculate
+                </button>
+            </form>
+        </div>
+
+        <div class="calculadora__result-container">
+            <h3 class="calculadora__result-container--title">El retorno total es de:</h3>
+            <p class="calculadora__result-container--amount"></p>
+        </div>
+
+    </section>
+
+    <script src="./calculadoraAPY.js"></script>
+</body>
+</html>

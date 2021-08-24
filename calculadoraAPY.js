@@ -1,0 +1,89 @@
+function options(optionSelected) {
+    if (optionSelected.compound.selectedIndex != 0) {
+        document.location = optionSelected.compound.options[optionSelected.compound.selectedIndex].value
+    }
+}
+
+
+
+function convertAPYToAPR(apy, compoundFrequency){
+    let numberOfTimes;
+
+    switch (compoundFrequency) {
+        case 1: "daily"
+            numberOfTimes = 365;
+            break;
+        case 2: "weekly"
+            numberOfTimes = 365 / 7;
+            break;
+        case 3: "monthly"
+            numberOfTimes = 365 / 30;
+            break;
+        case 4: "quarterly"
+            numberOfTimes = 365 / 12 * 3;
+            break;
+        case 5: "half-yearly"
+            numberOfTimes = 365 / 2;
+            break;
+        case 6: "yearly"
+            numberOfTimes = 365 / 365;
+            break;
+        default
+    }
+
+}
+
+function amount(apy, term, initialBalance) {
+    const APYDay = apy / 365;
+    const APYTotalDays = APYDay * term;
+    
+    const calculateFinalBlance = (APYTotalDays / 100) * initialBalance;
+
+    return initialBalance + calculateFinalBlance;
+}
+
+
+function calculateAPY() {
+    // const inputInterest = document.getElementById("inputInterest");
+    // const valueInterest = inputInterest.value;
+
+    const inputCompoundFrequency = document.getElementById("compoundFrequency");
+    const valueCompoundFrequency = inputCompoundFrequency.value;
+
+    const inputAPY = document.getElementById("inputAPY");
+    const valueAPY = inputAPY.value;
+
+    const inputTerm = document.getElementById("inputTerm");
+    const valueTerm = inputTerm.value;
+
+    const inputInitialBalance = document.getElementById("inputInitialBalance");
+    const valueInputBalance = inputInitialBalance.value;
+
+
+}
+
+// Ejemplo Calculando APR con APY y compoundFrequency mensual
+// APY + 1 = (12+APR/12)^12 ==== APY+1 = (12+APR)^12/12^12
+
+// (APY + 1)(12^12) = (12+APR)^12
+
+// raiz12 (APY + 1)(12^12)    -12 = APR
+
+// APR = raiz12 ((APY + 1) (n^n)) -n
+
+
+
+// APY
+// 5.09/12 = 0.42
+// 5.09/365 = 0.41835
+
+// 26.1/12 = 2.175
+// 26.1/365= 2.145
+
+
+// APR
+// 4.97/12 = 0.4141
+// 4.97/365 = 0.4084
+
+// 23.42/12 = 1.95
+// 23.42/365= 1.92
