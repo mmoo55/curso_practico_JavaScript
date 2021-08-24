@@ -1,6 +1,5 @@
-function convertAPYToAPR(APYPercent, compoundFrequency){
+function convertAPYToAPR(APYPercent, compoundFrequency) {
     let numberOfTimes;
-    let APR;
     let APY = APYPercent / 100;
     
     // APR = raiz12 ((APY + 1) (n^n)) -n
@@ -19,11 +18,36 @@ function convertAPYToAPR(APYPercent, compoundFrequency){
         numberOfTimes = 365 / 365;
     }
 
-    APR = Math.pow((APY+1)*(Math.pow(numberOfTimes, numberOfTimes)), 1 / numberOfTimes) - numberOfTimes;
+    let APR = Math.pow((APY+1)*(Math.pow(numberOfTimes, numberOfTimes)), 1 / numberOfTimes) - numberOfTimes;
     
     const APRPercent = APR * 100;
 
     return APRPercent;
+}
+
+function convertAPRToAPY(APRPercent, compoundFrequency) {
+    let numberOfTimes;
+    let APR = APRPercent / 100;
+
+    if (compoundFrequency == "daily") {
+        numberOfTimes = 365;
+    } else if (compoundFrequency == "weekly") {
+        numberOfTimes = 365 / 7;
+    } else if (compoundFrequency == "monthly") {
+        numberOfTimes = 365 / 30;
+    } else if (compoundFrequency == "quarterly") {
+        numberOfTimes = 365 / 12 * 3;
+    } else if (compoundFrequency == "half-yearly") {
+        numberOfTimes = 365 / 2;
+    } else { /* if (compoundFrequency == "yearly") */
+        numberOfTimes = 365 / 365;
+    }
+
+    let APY = Math.pow(1 + (APR/numberOfTimes), numberOfTimes) - 1;
+    
+    const APYPercent = APY * 100;
+
+    return APYPercent;
 }
 
 function amount(apy, term, initialBalance) {
@@ -57,8 +81,11 @@ function calculateAPY() {
     const resultAmount = document.getElementById("amount");
     resultAmount.innerText = `${ResultAmount} $`
 
-    const ResultInteres = convertAPYToAPR(valueAPY, valueCompoundFrequency);
-    /* console.log(ResultInteres); */
+    const resultInteres = convertAPYToAPR(valueAPY, valueCompoundFrequency);
+    /* console.log(resultInteres); */
+
+    const resultAPY = convertAPRToAPY(valueInterest, valueCompoundFrequency);
+    console.log(resultAPY);
 }
 
 // Ejemplo Calculando APR con APY y compoundFrequency mensual
